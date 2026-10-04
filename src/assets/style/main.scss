@@ -1,0 +1,59 @@
+@use './variables' as *;
+
+:root {
+  --bg-main: #{$bg-main};
+  --card-border: #{$card-border};
+  --primary-warm: #{$primary-warm};
+  --accent-terracotta-hover: #{$accent-terracotta-hover};
+  --accent-soft: #{$accent-soft};
+  --total-card-border: #{$total-card-border};
+  --text-title: #{$text-title};
+  --text-body: #{$text-body};
+  --shadow-toast: #{$shadow-toast};
+  --surface-success: #{$surface-success};
+  --text-success: #{$text-success};
+  --border-success: #{$border-success};
+  --surface-danger: #{$surface-danger};
+  --border-danger-soft: #{rgba($accent-terracotta, 0.3)};
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-body);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+}

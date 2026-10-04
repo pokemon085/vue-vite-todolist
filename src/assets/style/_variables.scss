@@ -1,0 +1,48 @@
+/* ---------------------------------- */
+/* 基礎溫暖色調                         */
+/* ---------------------------------- */
+$bg-main: #fcf8f3;
+$card-bg: #ffffff;
+$card-border: #f0eae1;
+$primary-warm: #d97706;
+$primary-hover: #b45309;
+$accent-terracotta: #e07a5f;
+$accent-terracotta-hover: #c86348;
+$accent-soft: #fef3c7;
+$accent-soft-hover: #fde68a;
+$text-title: #451a03;
+$text-body: #78350f;
+$text-warm-secondary: #92400e;
+$text-muted: #a89f91;
+$surface-soft: #f7f2ea;
+$surface-input: #fcfaf7;
+$border-input: #ebdcd0;
+$text-placeholder: #c4b5a5;
+$shadow-warm: rgba(120, 53, 15, 0.12);
+$shadow-toast: rgba($text-body, 0.15);
+$shadow-warm-medium: rgba(120, 53, 15, 0.08);
+$shadow-warm-subtle: rgba(120, 53, 15, 0.04);
+$focus-warm-shadow: rgba(217, 119, 6, 0.12);
+$shadow-primary-soft: rgba(217, 119, 6, 0.2);
+$total-card-bg: linear-gradient(135deg, #fffcf7 0%, #fff6eb 100%);
+$total-card-border: #f7e2d0;
+$border-warm-divider: #f0d8c2;
+$checkbox-border: #d6c7b2;
+$surface-danger: #fee2e2;
+$text-danger: #b91c1c;
+$text-danger-bright: #ef4444;
+$surface-success: #ecfdf5;
+$text-success: #065f46;
+$border-success: #a7f3d0;
+
+/* ---------------------------------- */
+/* 按鈕樣式                           */
+/* ---------------------------------- */
+$button-primary-bg: #f59e0b;
+$button-primary-shadow-color: rgba(245, 158, 11, 0.25);
+$button-primary-hover-shadow-color: rgba(245, 158, 11, 0.35);
+$button-primary-active-shadow-color: rgba(245, 158, 11, 0.2);
+$button-outline-border: #fcd34d;
+$button-outline-hover-bg: #fffbeb;
+$button-danger-bg: #fecaca;
+$button-danger-hover-bg: #fca5a5;
