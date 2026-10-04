@@ -14,7 +14,7 @@
           @click="triggerImport"
           :loading="importXlsxLoading"
         >
-          <span class="mdi mdi-file-plus-outline"></span>匯入
+          ⬇️匯入
           <input ref="fileInput" type="file" accept=".xlsx,.xls" hidden @change="importFromExcel" />
         </BaseButton>
         <BaseButton
@@ -24,7 +24,7 @@
           class="btn-action"
           @click="exportToExcel"
         >
-          <span class="mdi mdi-file-download-outline"></span>匯出
+          📤匯出
         </BaseButton>
       </div>
     </header>
@@ -38,10 +38,7 @@
             <span class="currency">NT$</span>
             {{ totalPrice.toLocaleString() }}
           </div>
-          <div class="completed-info">
-            <span class="mdi mdi-sparkles"></span>
-            已完成 {{ completedLength }} / {{ allLength }} 個項目
-          </div>
+          <div class="completed-info">✨ 已完成 {{ completedLength }} / {{ allLength }} 個項目</div>
         </div>
         <div class="chart-box">
           <DonutChart :completed="completedLength" :total="allLength" />
@@ -50,10 +47,10 @@
 
       <div class="action-btn-group">
         <BaseButton variant="primary" size="md" class="btn-add" @click="addItem">
-          <span class="mdi mdi-plus mr-1"></span>新增採買項目
+          ＋新增採買項目
         </BaseButton>
         <BaseButton variant="danger" size="md" class="btn-clear" @click="clearAllList">
-          <span class="mdi mdi-trash-can-outline mr-1"></span>清空所有
+          🧹清空所有清單
         </BaseButton>
       </div>
     </div>
@@ -103,24 +100,24 @@
             </div>
             <div class="todo-item__meta-row">
               <span v-if="item.date" class="todo-item__date">
-                <span class="mdi mdi-calendar-month-outline"></span> {{ item.date }}
+                <span class="calendar">📅</span> {{ item.date }}
               </span>
               <span v-if="item.note" class="todo-item__note">
-                <span class="mdi mdi-notebook-outline"></span> {{ item.note }}
+                <span class="notebook">📝</span> {{ item.note }}
               </span>
             </div>
           </div>
 
           <div class="todo-item__actions">
             <button @click="editItem(item)" class="btn-icon edit" title="編輯">
-              <span class="mdi mdi-pencil-outline"></span>
+              <span class="pencil">✏️</span>
             </button>
             <button @click="deleteItem(item.id)" class="btn-icon delete" title="刪除">
-              <span class="mdi mdi-trash-can-outline"></span>
+              <span class="trash">🗑️</span>
             </button>
           </div>
         </div>
-        <NoData v-if="filterList.length === 0" name="目前沒有任何採買項目喔～" />
+        <NoData v-if="filterList.length === 0" name="目前沒有任何項目喔～" />
       </div>
     </div>
 
@@ -591,10 +588,6 @@ onMounted(() => {
       background: rgba($accent-soft, 0.6);
       padding: 4px 10px;
       border-radius: 20px;
-
-      .mdi {
-        color: $primary-warm;
-      }
     }
 
     .chart-box {

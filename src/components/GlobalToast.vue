@@ -2,7 +2,7 @@
   <Teleport to="body">
     <Transition name="toast-fade">
       <div v-if="isShow" class="global-toast" :class="toastType">
-        <span class="icon mdi" :class="iconClass"></span>
+        <span class="icon">{{ icon }}</span>
         <span class="message">{{ toastMessage }}</span>
       </div>
     </Transition>
@@ -17,16 +17,16 @@ import { useToastStore } from '@/stores/toast'
 const toastStore = useToastStore()
 const { isShow, toastMessage, toastType } = storeToRefs(toastStore)
 
-const iconClass = computed(() => {
+const icon = computed(() => {
   switch (toastType.value) {
     case 'warning':
-      return 'mdi-alert-circle-outline'
+      return '⚠️'
     case 'success':
-      return 'mdi-check-circle-outline'
+      return '✅'
     case 'error':
-      return 'mdi-close-circle-outline'
+      return '❌'
     default:
-      return 'mdi-information-outline'
+      return 'ℹ️'
   }
 })
 </script>

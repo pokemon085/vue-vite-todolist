@@ -1,6 +1,6 @@
 <template>
   <div class="search-wrap">
-    <span class="search-icon mdi mdi-magnify"></span>
+    <span class="search-icon">🔍</span>
     <input
       type="text"
       name="search"
@@ -15,7 +15,7 @@
       @click="model = ''"
       aria-label="清除搜尋內容"
     >
-      <span class="mdi mdi-close"></span>
+      <span class="close">✖</span>
     </button>
   </div>
 </template>
@@ -52,7 +52,6 @@ const model = defineModel<string>({ default: '' })
 
   .search-icon {
     font-size: 20px;
-    color: $primary-hover;
     margin-right: 8px;
   }
 
@@ -76,7 +75,6 @@ const model = defineModel<string>({ default: '' })
     color: $text-muted;
     cursor: pointer;
     padding: 4px;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,7 +83,6 @@ const model = defineModel<string>({ default: '' })
 
     &:hover {
       color: $text-title;
-      background: $surface-soft;
     }
   }
 }

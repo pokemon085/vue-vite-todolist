@@ -1,7 +1,7 @@
 <template>
   <div class="empty-state">
     <div class="empty-icon-wrap">
-      <span class="mdi mdi-basket-outline"></span>
+      <span class="no-data-icon">{{ icon }}</span>
     </div>
     <span class="empty-text">{{ name }}</span>
   </div>
@@ -13,7 +13,7 @@ withDefaults(
     name: string
   }>(),
   {
-    icon: 'mdi-basket-outline',
+    icon: '📂',
     name: '',
   },
 )
@@ -37,7 +37,7 @@ withDefaults(
     align-items: center;
     justify-content: center;
 
-    .mdi {
+    .no-data-icon {
       font-size: 32px;
       color: $primary-hover;
     }

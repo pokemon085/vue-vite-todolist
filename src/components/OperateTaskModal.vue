@@ -7,7 +7,7 @@
             <h3>{{ data.title }}</h3>
 
             <button type="button" class="close-btn" @click="handleClose" aria-label="關閉視窗">
-              <span class="mdi mdi-close"></span>
+              <span class="close">✖</span>
             </button>
           </div>
 
@@ -206,7 +206,6 @@ watch(
 
     &:hover {
       color: $text-title;
-      background-color: $surface-soft;
     }
   }
 }

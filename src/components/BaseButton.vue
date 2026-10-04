@@ -10,8 +10,8 @@
     :disabled="disabled || loading"
     @click="handleClick"
   >
-    <span v-if="loading" class="icon mdi mdi-loading mdi-spin"></span>
-    <span v-else-if="icon" class="icon mdi" :class="icon"></span>
+    <span v-if="loading" class="loading-icon"></span>
+    <span v-else-if="icon" class="icon">{{ icon }}</span>
     <span class="btn-text">
       <slot />
     </span>
@@ -23,7 +23,7 @@ export interface WarmButtonProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'danger'
   /** 尺寸 */
   size?: 'sm' | 'md' | 'lg'
-  /** MDI Icon */
+  /** emoji Icon */
   icon?: string
   /** 是否載入中 */
   loading?: boolean
@@ -163,6 +163,21 @@ const handleClick = (e: MouseEvent) => {
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
+  }
+}
+
+.loading-icon {
+  width: 16px;
+  height: 16px;
+  border: 2px solid $shadow-warm-medium;
+  border-top-color: $text-warm-secondary;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 </style>

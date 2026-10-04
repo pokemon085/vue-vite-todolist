@@ -15,7 +15,6 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
-    "@mdi/font": "^7.4.47",
     "echarts": "^6.1.0",
     "pinia": "^4.0.3",
     "sass": "^1.105.1",
