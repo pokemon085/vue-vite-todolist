@@ -17,7 +17,13 @@
           <span class="mdi mdi-file-plus-outline"></span>匯入
           <input ref="fileInput" type="file" accept=".xlsx,.xls" hidden @change="importFromExcel" />
         </BaseButton>
-        <BaseButton variant="outline" size="sm" class="btn-action" @click="exportToExcel">
+        <BaseButton
+          v-if="allLength > 0"
+          variant="outline"
+          size="sm"
+          class="btn-action"
+          @click="exportToExcel"
+        >
           <span class="mdi mdi-file-download-outline"></span>匯出
         </BaseButton>
       </div>
