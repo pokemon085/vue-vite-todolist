@@ -7,6 +7,8 @@
   </div>
 </template>
 <script setup lang="ts">
+// 共用暫無資料組件
+
 withDefaults(
   defineProps<{
     icon?: string

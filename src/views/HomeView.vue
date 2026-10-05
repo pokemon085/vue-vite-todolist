@@ -3,7 +3,7 @@
     <header class="header-section">
       <div class="header-title-box">
         <span class="sub-title">MY SHOPPING LIST</span>
-        <h1 class="todo-list-title">採買小清單 📝</h1>
+        <h1 class="todo-list-title">採買小清單 📋</h1>
       </div>
 
       <div class="header-actions">
@@ -14,7 +14,7 @@
           @click="triggerImport"
           :loading="importXlsxLoading"
         >
-          ⬇️匯入
+          ⬇️ 匯入
           <input ref="fileInput" type="file" accept=".xlsx,.xls" hidden @change="importFromExcel" />
         </BaseButton>
         <BaseButton
@@ -24,7 +24,7 @@
           class="btn-action"
           @click="exportToExcel"
         >
-          📤匯出
+          📤 匯出
         </BaseButton>
       </div>
     </header>
@@ -47,10 +47,16 @@
 
       <div class="action-btn-group">
         <BaseButton variant="primary" size="md" class="btn-add" @click="addItem">
-          ＋新增採買項目
+          ＋ 新增採買項目
         </BaseButton>
-        <BaseButton variant="danger" size="md" class="btn-clear" @click="clearAllList">
-          🧹清空所有清單
+        <BaseButton
+          v-if="allLength > 0"
+          variant="danger"
+          size="md"
+          class="btn-clear"
+          @click="clearAllList"
+        >
+          🧹 清空所有清單
         </BaseButton>
       </div>
     </div>
@@ -110,10 +116,10 @@
 
           <div class="todo-item__actions">
             <button @click="editItem(item)" class="btn-icon edit" title="編輯">
-              <span class="pencil">✏️</span>
+              <span class="pencil">✍️</span>
             </button>
             <button @click="deleteItem(item.id)" class="btn-icon delete" title="刪除">
-              <span class="trash">🗑️</span>
+              <span class="trash">❌</span>
             </button>
           </div>
         </div>
@@ -424,14 +430,27 @@ const importFromExcel = (event: Event): void => {
   const target = event.target as HTMLInputElement
   const file = target.files?.[0]
 
-  if (!file) return
+  const showError = () => {
+    toastStore.showToast({
+      message: '匯入失敗',
+      type: 'error',
+    })
+  }
+
+  if (!file) {
+    showError()
+    return
+  }
 
   const reader = new FileReader()
 
   reader.onload = async (e): Promise<void> => {
     const data = e.target?.result
 
-    if (!data) return
+    if (!data) {
+      showError()
+      return
+    }
 
     importXlsxLoading.value = true
     const workbook = XLSX.read(data, {
@@ -442,7 +461,7 @@ const importFromExcel = (event: Event): void => {
     const sheetName = workbook.SheetNames[0]
 
     if (!sheetName) {
-      importXlsxLoading.value = false
+      showError()
       return
     }
 
@@ -450,10 +469,22 @@ const importFromExcel = (event: Event): void => {
 
     if (!worksheet) {
       importXlsxLoading.value = false
+      showError()
       return
     }
 
     const rows = XLSX.utils.sheet_to_json<Record<string, unknown>>(worksheet)
+    const firstRow = rows[0]
+    if (!firstRow || !('項目名稱' in firstRow)) {
+      importXlsxLoading.value = false
+      target.value = ''
+
+      toastStore.showToast({
+        message: '匯入失敗：找不到「項目名稱」欄位',
+        type: 'error',
+      })
+      return
+    }
 
     const importedList: listItem[] = rows
       .filter((row) => row['項目名稱'])
@@ -471,7 +502,7 @@ const importFromExcel = (event: Event): void => {
     target.value = ''
     await nextTick()
     toastStore.showToast({
-      message: '已匯入成功',
+      message: '匯入成功',
       type: 'success',
     })
   }

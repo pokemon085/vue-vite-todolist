@@ -19,6 +19,8 @@
 </template>
 
 <script setup lang="ts">
+// 共用按鈕
+
 export interface WarmButtonProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'danger'
   /** 尺寸 */

@@ -6,6 +6,8 @@
 import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue'
 import * as echarts from 'echarts'
 
+// 圓形進度條
+
 const chartRef = ref<HTMLElement | null>(null)
 let chart: echarts.ECharts | null = null
 

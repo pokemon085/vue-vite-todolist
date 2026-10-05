@@ -14,6 +14,8 @@ import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useToastStore } from '@/stores/toast'
 
+// 全域通知組件
+
 const toastStore = useToastStore()
 const { isShow, toastMessage, toastType } = storeToRefs(toastStore)
 

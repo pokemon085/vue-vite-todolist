@@ -19,6 +19,8 @@
 <script setup lang="ts">
 import BaseButton from '@/components/BaseButton.vue'
 
+// 確認對話框彈窗
+
 defineProps<{
   modelValue: boolean
   title: string

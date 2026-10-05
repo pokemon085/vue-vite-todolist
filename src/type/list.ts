@@ -20,6 +20,7 @@ export interface operateDetailType {
   data: Partial<listItem>
 }
 
+// 確定刪除彈窗
 export interface confirmDetail {
   show: boolean
   title: string

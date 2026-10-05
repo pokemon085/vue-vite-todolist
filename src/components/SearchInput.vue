@@ -20,6 +20,8 @@
   </div>
 </template>
 <script setup lang="ts">
+// 搜尋共用組件
+
 withDefaults(
   defineProps<{
     placeholder: string

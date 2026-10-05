@@ -13,44 +13,29 @@
 
           <div class="modal-body">
             <div class="add-todo-form">
-              <div class="form-item">
-                <label>項目名稱<span class="required"> *</span> </label>
+              <InputField
+                v-model="form.name"
+                label-name="項目名稱"
+                placeholder="請輸入項目"
+                input-type="text"
+                required
+              />
 
-                <input
-                  v-model.trim="form.name"
-                  type="text"
-                  placeholder="請輸入項目"
-                  class="form-input"
-                />
-              </div>
+              <InputField
+                v-model="form.price"
+                label-name="金額"
+                placeholder="請輸入金額"
+                input-type="number"
+              />
 
-              <div class="form-item">
-                <label>金額</label>
+              <InputField v-model="form.date" label-name="購買日期" input-type="date" />
 
-                <input
-                  v-model.number="form.price"
-                  type="number"
-                  placeholder="請輸入金額"
-                  class="form-input"
-                />
-              </div>
-
-              <div class="form-item">
-                <label>購買日期</label>
-
-                <input v-model="form.date" type="date" class="form-input" :max="today" />
-              </div>
-
-              <div class="form-item">
-                <label>備註</label>
-
-                <textarea
-                  v-model.trim="form.note"
-                  placeholder="請輸入備註"
-                  class="form-input"
-                  rows="3"
-                ></textarea>
-              </div>
+              <InputField
+                v-model="form.note"
+                label-name="備註"
+                placeholder="請輸入備註"
+                input-type="textarea"
+              />
             </div>
           </div>
 
@@ -69,10 +54,13 @@
 
 <script setup lang="ts">
 import { reactive, watch } from 'vue'
-import BaseButton from '@/components/BaseButton.vue' // 引入共用按鈕
+import BaseButton from '@/components/BaseButton.vue'
 import type { listItem, operateDetailType } from '@/type/list'
 import { TodoStatus } from '@/utils/constants'
 import { getToday } from '@/utils'
+import InputField from '@/components/InputField.vue'
+
+// 新增/編輯對話框
 
 const props = defineProps<{
   modelValue: boolean
@@ -83,8 +71,6 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: boolean): void
   (e: 'submit', value: listItem): void
 }>()
-
-const today = getToday()
 
 // 初始表單
 const getInitialForm = (): listItem => ({
@@ -222,44 +208,5 @@ watch(
 
 .add-todo-form {
   margin-top: 8px;
-}
-
-.form-item {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
-
-  label {
-    font-size: 16px;
-    font-weight: 700;
-    color: $text-body;
-    margin-bottom: 6px;
-  }
-
-  .required {
-    color: $accent-terracotta;
-  }
-
-  .form-input {
-    padding: 10px 14px;
-    background: $surface-input;
-    border: 1px solid $border-input;
-    border-radius: 12px;
-    font-size: 14px;
-    color: $text-title;
-    outline: none;
-    transition: all 0.2s ease;
-    font-family: inherit;
-
-    &::placeholder {
-      color: $text-placeholder;
-    }
-
-    &:focus {
-      border-color: $primary-warm;
-      background: $card-bg;
-      box-shadow: 0 0 0 3px $focus-warm-shadow;
-    }
-  }
 }
 </style>
