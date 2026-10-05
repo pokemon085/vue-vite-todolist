@@ -25,8 +25,10 @@ const { needRefresh, updateServiceWorker } = useRegisterSW()
 <style lang="scss" scoped>
 .pwa-update-toast {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  top: 24px;
+  right: 50%;
+  width: 100%;
+  transform: translate(50%, 0%);
   z-index: 9999;
   display: flex;
   align-items: center;
