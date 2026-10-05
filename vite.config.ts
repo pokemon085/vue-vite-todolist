@@ -25,9 +25,6 @@ export default defineConfig({
         enabled: false,
         type: 'module',
       },
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2}'],
-      },
 
       manifest: {
         name: '採買清單',
